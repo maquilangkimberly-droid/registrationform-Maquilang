@@ -43,6 +43,7 @@
       border: none;
       border-radius: 5px;
       cursor: pointer;
+      font-size: 16px;
     }
     button:hover {
       background-color: #45a049;
@@ -57,6 +58,13 @@
       color: #333;
       margin-top: 20px;
     }
+    .back-btn {
+      background-color: #007bff;
+      margin-top: 20px;
+    }
+    .back-btn:hover {
+      background-color: #0056b3;
+    }
   </style>
 </head>
 <body>
@@ -64,6 +72,7 @@
   <div class="container">
     <h2>Student Registration</h2>
 
+    <!-- Registration Form -->
     <form id="registrationForm">
       <label for="fullname">Full Name:</label>
       <input type="text" id="fullname" name="fullname" placeholder="Enter full name" required>
@@ -99,20 +108,31 @@
       <button type="submit">Register</button>
     </form>
 
+    <!-- Confirmation Message -->
     <div class="confirmation" id="confirmationBox">
       <h1>Registered</h1>
       <p>Thank you for registering! 🎉</p>
+      <button class="back-btn" id="backBtn">Back to Form</button>
     </div>
   </div>
 
   <script>
     const form = document.getElementById('registrationForm');
     const confirmation = document.getElementById('confirmationBox');
+    const backBtn = document.getElementById('backBtn');
 
+    // Show confirmation when form is submitted
     form.addEventListener('submit', function(e) {
-      e.preventDefault(); // stop page reload
-      form.style.display = 'none'; // hide form
-      confirmation.style.display = 'block'; // show message
+      e.preventDefault(); // Stop the page reload
+      form.style.display = 'none'; // Hide the form
+      confirmation.style.display = 'block'; // Show confirmation
+    });
+
+    // Allow user to go back to form
+    backBtn.addEventListener('click', function() {
+      form.reset(); // Clear all fields
+      confirmation.style.display = 'none'; // Hide confirmation
+      form.style.display = 'block'; // Show form again
     });
   </script>
 
