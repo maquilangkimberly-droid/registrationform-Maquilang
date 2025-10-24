@@ -18,7 +18,7 @@
       border-radius: 10px;
       box-shadow: 0 0 10px rgba(0,0,0,0.1);
     }
-    h2 {
+    h2, h1 {
       text-align: center;
       color: #333;
     }
@@ -47,14 +47,24 @@
     button:hover {
       background-color: #45a049;
     }
+    .confirmation {
+      display: none;
+      border: 2px solid dodgerblue;
+      padding: 20px;
+      border-radius: 10px;
+      text-align: center;
+      background: #e6f0ff;
+      color: #333;
+      margin-top: 20px;
+    }
   </style>
 </head>
 <body>
 
   <div class="container">
     <h2>Student Registration</h2>
-    <form action="Untitled-2.html" method="get">
-    <form>
+
+    <form id="registrationForm">
       <label for="fullname">Full Name:</label>
       <input type="text" id="fullname" name="fullname" placeholder="Enter full name" required>
 
@@ -67,8 +77,8 @@
       <label for="course">Course:</label>
       <select id="course" name="course" required>
         <option value="">-- Select Course --</option>
-        <option value="BSIT">BSIT Electronics</option>
-        <option value="BSIT">BSIT ComTech</option>
+        <option value="BSIT Electronics">BSIT Electronics</option>
+        <option value="BSIT ComTech">BSIT ComTech</option>
         <option value="BSED">BSED</option>
         <option value="BSTM">BSTM</option>
         <option value="BSHM">BSHM</option>
@@ -88,9 +98,23 @@
 
       <button type="submit">Register</button>
     </form>
+
+    <div class="confirmation" id="confirmationBox">
+      <h1>Registered</h1>
+      <p>Thank you for registering! 🎉</p>
+    </div>
   </div>
+
+  <script>
+    const form = document.getElementById('registrationForm');
+    const confirmation = document.getElementById('confirmationBox');
+
+    form.addEventListener('submit', function(e) {
+      e.preventDefault(); // stop page reload
+      form.style.display = 'none'; // hide form
+      confirmation.style.display = 'block'; // show message
+    });
+  </script>
 
 </body>
 </html>
-
-
